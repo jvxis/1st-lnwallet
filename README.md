@@ -55,7 +55,7 @@ cd 1st-lnwallet
 Recomendamos o uso de um ambiente virtual para isolar as dependências do projeto.
 
 ```bash
-python -m venv venv
+python3 -m venv venv
 source venv/bin/activate  # No Windows: venv\Scripts\activate
 ```
 
@@ -124,7 +124,6 @@ app.run(debug=Config.DEBUG, port=Config.PORT, host='127.0.0.1')
 ```bash
 export FLASK_ENV=production
 ```
-
 ### 🔒 Passo 5 - No caso de usar o Nginx, utilize o `CERTBOT` para criar um certificado e acesso ao site via HTTPS.
 
 ## 🤝 Contribuição
