@@ -433,5 +433,5 @@ def send_to_lightning_address(payment_request, amount_sats):
 if __name__ == '__main__':
     init_db()  # Inicializar banco apenas aqui, para evitar duplicidade
     logging.info("Iniciando a aplicação Flask...")
-    app.run(debug=Config.DEBUG, port=Config.PORT)
+    app.run(debug=Config.DEBUG, port=Config.PORT, host='0.0.0.0')
 
