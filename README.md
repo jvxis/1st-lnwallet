@@ -2,6 +2,9 @@
 
 My First Lightning Wallet é uma aplicação Flask que permite criar e gerenciar carteiras Lightning Network, realizar pagamentos, receber fundos e muito mais. Este projeto foi desenvolvido para facilitar a adoção do Bitcoin Lightning Network.
 
+![image](https://github.com/user-attachments/assets/dc6c05eb-8cf1-4875-bbb8-9cbaf1108472)
+
+
 ## Pré-requisitos
 
 Antes de começar, certifique-se de ter os seguintes itens instalados:
