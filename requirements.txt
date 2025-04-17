@@ -1,0 +1,11 @@
+Flask
+Flask-WTF
+Jinja2
+Werkzeug
+gunicorn
+requests
+pillow
+qrcode
+python-dotenv
+flask_limiter
+pyotp

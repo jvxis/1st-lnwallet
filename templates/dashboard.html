@@ -1,0 +1,124 @@
+{% set page_class = "dashboard-page" %}
+
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="flash-messages">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="alert alert-{{ category }}">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+</div>
+
+<div class="container dashboard-container">
+    <div class="info-section">
+        <div class="header-user">
+            {% if user['logo_url'] %}
+                <img src="{{ url_for('proxy_image', url=session['user']['logo_url']) }}" alt="Logo" class="user-logo">
+            {% else %}
+                <div class="logo-placeholder">⚡️</div>
+            {% endif %}
+            <div class="button-group">
+                <button id="change-password-btn" class="change-password-btn">{{ translations['change_password'] }}</button>
+                {% if session.get('lang') == 'pt' %}
+                    <a href="https://t.me/SATSfaction_bot?start=ref_1265103130" target="_blank" class="button buy-sats-btn">💸 Comprar Sats</a>
+                {% endif %}
+            </div>
+            <div class="user-info">
+                <h2>{{ translations['welcome_user'] }} <span>{{ user['name'] }}</span></h2>
+                <p><strong>{{ translations['wallet_id'] }}:</strong> <code>{{ user['wallet_id'] }}</code></p>
+                <p><strong>{{ translations['lightning_address'] }}:</strong> <code>{{ ln_address }}</code></p>
+            </div>
+        </div>
+
+        <div class="balance-box">
+            <button id="btn-extrato" class="extrato-btn">{{ translations['statement'] }}</button>
+            
+            <p>
+                {{ translations['balance'] }}
+                <span id="toggle-balance" class="toggle-icon">👁️</span>
+            </p>
+            <h1 class="balance-value"><span id="balance-amount">{{ balance }}</span> <small>SATs</small></h1>
+            <p id="balance-converted" class="balance-converted">--</p> <!-- NOVO ELEMENTO -->
+            <button id="btn-satsback" class="satsback-btn"> {{ translations['satsback'] }}</button>
+        </div>
+        
+
+        <div class="actions">
+            <button id="btn-pagar">{{ translations['pay_invoice'] }}</button>
+            <button id="btn-receber">{{ translations['receive'] }}</button>
+        </div>
+
+        <!-- Modal de Pagamento -->
+        <div id="modal-pagamento" class="modal hidden">
+            <div class="modal-content">
+                <h3>{{ translations['pay_invoice'] }}</h3>
+                <!-- Flash Messages dentro do Modal -->
+                <div id="flash-messages-modal" class="flash-messages"></div>
+                 <!-- Mensagens ocultas para traduções -->
+                <span id="payment-success-msg" class="hidden">{{ translations['payment_success'] }}</span>
+                <span id="payment-error-msg" class="hidden">{{ translations['payment_error'] }}</span>
+                <input type="text" id="invoice-input" placeholder="{{ translations['paste_invoice'] }}">
+                <button id="scanQrButton">{{ translations['scan_qr'] }}</button>
+                <div id="reader" style="display: none; margin-top: 10px;"></div>
+                <button id="decode-invoice-btn">{{ translations['check_invoice'] }}</button>
+                <div id="invoice-details" class="hidden">
+                    <p><strong>{{ translations['amount'] }}:</strong> <span id="invoice-amount"></span> SATs</p>
+                    <p><strong>{{ translations['description_invoice'] }}:</strong> <span id="invoice-desc"></span></p>
+                    <p><strong>{{ translations['expiry'] }}:</strong> <span id="invoice-expiry"></span> seg</p>
+                    <button id="confirm-payment-btn">{{ translations['confirm_payment'] }}</button>
+                </div>
+                <button id="close-modal">{{ translations['close'] }}</button>
+            </div>
+        </div>
+
+        <!-- Modal de Recebimento -->
+        <div id="modal-receber" class="modal hidden">
+            <div class="modal-content">
+                <h3>{{ translations['receive_payment'] }}</h3>
+                <input type="number" id="receive-amount" placeholder="{{ translations['amount_sats'] }}">
+                <input type="text" id="receive-description" placeholder="{{ translations['description_invoice'] }}">
+                <button id="generate-invoice-btn">{{ translations['generate_invoice'] }}</button>
+                <div id="invoice-result" class="hidden">
+                    <p><strong>{{ translations['payment_request'] }}:</strong></p>
+                    <pre id="payment-request-text"></pre>
+                    <button id="copy-invoice-btn">{{ translations['copy_invoice'] }}</button>
+                    <div id="qrcode"></div>
+                </div>
+                <button id="close-modal-receber">{{ translations['back_dashboard'] }}</button>
+            </div>
+        </div>
+
+        <!-- Modal Extrato -->
+        <div id="modal-extrato" class="modal hidden">
+            <div class="modal-content modal-large">
+                <h3>{{ translations['statement'] }}</h3>
+                <div class="extrato-container">
+                    <ul id="extrato-list" class="extrato-list"></ul>
+                </div>
+                <button id="close-modal-extrato">{{ translations['close'] }}</button>
+            </div>
+        </div>
+        <!-- Modal SATSBACK -->
+        <div id="modal-satsback" class="modal hidden">
+            <div class="modal-content">
+                <h3>{{ translations['satsback_history'] }}
+                    <span class="tooltip-icon">❓
+                        <span class="tooltip-text">{{ translations['satsback_tooltip']|safe }}</span>
+                    </span>
+                </h3>
+                <p><span id="satsback-total">💰 -- SATs</span> | <span id="satsback-claimed">🏆 -- SATs</span></p>
+                <ul id="satsback-list" class="extrato-list"></ul>
+                <button id="btn-claim-satsback" style="display: none;">{{ translations['claim_satsback'] }}</button>
+                <button id="close-modal-satsback">{{ translations['close'] }}</button>
+            </div>
+        </div>
+        
+
+        <a href="/logout" class="button logout-button">{{ translations['logout'] }}</a>
+    </div>
+</div>
+{% endblock %}

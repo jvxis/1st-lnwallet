@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="{{ session.get('lang', 'pt') }}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ translations['title'] }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='favicon-96x96.png') }}" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="{{ url_for('static', filename='favicon.svg') }}" />
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}" />
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static', filename='apple-touch-icon.png') }}" />
+    <meta name="apple-mobile-web-app-title" content="My First Lightning Wallet" />
+    <link rel="manifest" href="{{ url_for('static', filename='site.webmanifest') }}" />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+     <!-- Biblioteca para escanear QR Codes -->
+     <script src="https://unpkg.com/html5-qrcode/minified/html5-qrcode.min.js"></script>
+    <script>
+        // Carrega o tema imediatamente ao iniciar
+        const currentTheme = localStorage.getItem('theme') || 'light';
+        if (currentTheme === 'dark') {
+            document.documentElement.classList.add('dark-theme');
+        } else {
+            document.documentElement.classList.remove('dark-theme');
+        }
+    </script>
+    <script>
+        const translations = {
+            'description_invoice': '{{ translations["description_invoice"] }}',
+            'amount': '{{ translations["amount"] }}',
+            'fee': '{{ translations["fee"] }}'
+        };
+    </script>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-6TWXE9PWXT"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-6TWXE9PWXT');
+</script>
+</head>
+<body class="{{ session.get('theme', 'light') }} {{ page_class }}">
+    <header class="app-header">
+        <div class="app-title">
+            <img src="{{ url_for('static', filename='1stlnwallet.jpg') }}" alt="Logo" class="logo">
+            My First Lightning Wallet⚡
+        </div>
+        <div class="top-right">
+            <button id="theme-toggle">🌙 / ☀️</button>
+            <a href="/set_language/pt">🇧🇷</a>
+            <a href="/set_language/en">🇺🇸</a>
+        </div>
+    </header>
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+    <footer class="app-footer">
+        <p>&copy; 2025 My First Lightning Wallet</p>
+        <a href="https://br-ln.com" target="_blank">
+            <img src="{{ url_for('proxy_image', url='https://i.imgur.com/1MhWjE0.png') }}" alt="BRLN Club">
+        </a>&nbsp;&amp;&nbsp;
+        <a href = "https://lnbits.com" target="_blank">
+            <img class="lnbits-logo" src="{{ url_for('static', filename='lnbits.png') }}" alt="LNbits">
+        </a>&nbsp;&nbsp;
+        <p class="terms"><a href="/terms">{{ translations['terms_title'] }}</a></p>
+    </footer>
+    <!-- Script para detecção automática da língua usando localStorage para evitar loop -->
+    <script>
+      if (!localStorage.getItem("langSet") && window.location.pathname === "/") {
+          let userLang = navigator.language || navigator.userLanguage;
+          let lang = userLang.startsWith("pt") ? "pt" : "en";
+          localStorage.setItem("langSet", "true");
+          window.location.href = `/set_language/${lang}`;
+      }
+    </script>
+    <script src="{{ url_for('static', filename='scripts.js') }}"></script>
+    <!-- Inclusão da biblioteca html5-qrcode via CDN -->
+    <script src="https://unpkg.com/html5-qrcode"></script>
+
+</body>
+</html>

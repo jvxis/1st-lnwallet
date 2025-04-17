@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="flash-messages">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="alert alert-{{ category }}">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+</div>
+
+<!-- Container para alinhar o texto inspirador e o formulário -->
+<div class="main-container">
+    <!-- Seção de Texto Inspirador -->
+    <div class="intro-text">
+        <h2>{{ translations['home_intro_title'] }} ⚡</h2>
+        <p>{{ translations['home_intro'] | safe }}</p>
+    </div>
+
+    <!-- Container de login -->
+    <div class="container">
+        {% if 'user' in session %}
+            <h2>{{ translations['welcome_back'] }}, {{ session['user']['name'] }}</h2>
+            <a href="{{ url_for('dashboard') }}">{{ translations['go_to_dashboard'] }}</a>
+        {% else %}
+            <h2>{{ translations['login'] }}</h2>
+            <form action="/login" method="post">
+                <input type="email" name="email" placeholder="{{ translations['email'] }}" required>
+                <input type="password" name="password" placeholder="{{ translations['password'] }}" required>
+                {% if session.get('failed_login_attempts', 0) >= 3 %}
+                    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+                    <div class="g-recaptcha" data-sitekey="{{ config.RECAPTCHA_SITE_KEY }}"></div>
+                {% endif %}
+                <button type="submit">{{ translations['login_button'] }}</button>
+            </form>
+
+            <p style="margin-top: 20px;">
+                {{ translations['register_prompt'] }}
+                <a href="{{ url_for('auth.show_register') }}">{{ translations['register_here'] }}</a>
+            </p>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

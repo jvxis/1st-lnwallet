@@ -1,0 +1,1176 @@
+/* Definição de variáveis para temas claro e escuro */
+:root {
+    --bg-color-light: #f4f4f9;
+    --bg-color-dark: #222;
+    --text-color-light: #333;
+    --text-color-dark: #ddd;
+    --primary-color: #ffcc00;
+    --header-bg: #444;
+    --shadow-light: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    --shadow-dark: 0px 4px 10px rgba(255, 255, 255, 0.1);
+    --border-radius: 12px;
+}
+
+.hidden {
+    display: none !important;
+}
+
+
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg-color-light);
+    color: var(--text-color-light);
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* Header modernizado */
+
+header {
+    background-color: var(--header-bg);
+    color: #fff;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: var(--shadow-light);
+    height: 60px; /* Definir altura fixa */
+}
+.app-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 10px 20px;
+    height: 70px;
+    position: fixed;
+    z-index: 3000;
+    background-color: var(--header-bg);
+    min-width: 100%;
+    top: 0;
+    left: 0;
+    box-sizing: border-box; /* Evita que padding reduza o espaço */
+}
+.app-title {
+    display: flex;
+    align-items: center; /* Centraliza verticalmente */
+    gap: 10px; /* Espaço entre o logo e o texto */
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.logo {
+    width: 64px;  /* Ajuste o tamanho do logo conforme necessário */
+    height: auto;
+}
+
+.top-right {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Ajusta espaçamento entre os botões */
+    justify-content: flex-end;
+    flex-wrap: nowrap; /* Impede quebra de linha */
+    width: auto; /* Permite que o container ajuste ao conteúdo */
+    min-width: fit-content; /* Garante que não seja menor que necessário */
+    padding-right: 10px; /* Garante espaçamento interno */
+}
+
+/* Estilos para os botões de troca de idioma e tema */
+.top-right a, .top-right button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 1.1em;
+    padding: 5px 5px; /* Reduz um pouco o padding para caber melhor */
+    min-width: 10px; /* Evita que sejam muito pequenos */
+}
+
+/* Hover dos botões */
+.top-right button:hover, .top-right a:hover {
+    opacity: 0.7;
+}
+
+/* Container principal */
+.container {
+    width: 90%;
+    max-width: 600px;
+    margin: 40px auto;
+    background: var(--bg-color-light);
+    box-shadow: var(--shadow-light);
+    padding: 30px;
+    border-radius: var(--border-radius);
+    text-align: center;
+
+}
+/* Adiciona espaçamento entre o header e o conteúdo em todas as páginas, exceto o Dashboard */
+body:not(.dashboard-page) .container {
+    margin-top: 160px; /* Ajuste conforme necessário */
+}
+
+
+/* Tipografia */
+h1, h2 {
+    margin-bottom: 20px;
+    color: var(--text-color-light);
+}
+
+.container h3 {
+    color: black; /* Preto para fundo claro */
+    font-weight: bold;
+    margin-top: 15px;
+}
+
+/* Ajustando campos de entrada e botão */
+input[type="text"], 
+input[type="email"], 
+input[type="password"],
+button {
+    width: 100%; /* Garante que ocupem a largura total do contêiner */
+    max-width: 400px; /* Define um tamanho máximo para evitar distorções */
+    padding: 12px;
+    margin: 8px auto; /* Centraliza os elementos */
+    border-radius: var(--border-radius);
+    border: 1px solid #ccc;
+    display: block;
+    font-size: 1em;
+}
+
+button {
+    background-color: var(--primary-color);
+    border: none;
+    color: #333;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+    box-shadow: var(--shadow-light);
+}
+
+button:hover {
+    background-color: #e6b800;
+    transform: translateY(-2px);
+}
+/* Alinha a reCAPTCHA à esquerda */
+.g-recaptcha {
+    text-align: left;
+    margin: 8px auto; /* Ajuste o espaçamento conforme necessário */
+}
+/* Ajustando o botão de alternância entre temas */
+.top-right button {
+    background-color: transparent;
+    color: #fff;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: 0.3s;
+    padding: 6px 10px;
+    border: none;
+}
+/* Inputs aprimorados */
+input:focus, select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 5px rgba(255, 204, 0, 0.6);
+}
+
+/* Estilos específicos para o Dashboard */
+.dashboard-container {
+    text-align: center;
+}
+
+.info-section {
+    margin-top: 20px;
+    padding: 20px;
+    background: #f0f4f8;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-light);
+}
+
+/* Seção do Usuário no Dashboard */
+.header-user {
+    display: flex;
+    justify-content: space-between; /* distribui o espaço entre os elementos */
+    align-items: center;
+    flex-wrap: wrap; /* para permitir que os elementos se ajustem em telas menores */
+    gap: 10px;
+}
+.user-info {
+    flex-basis: 100%; /* garante que as informações do usuário fiquem na linha abaixo dos botões e do logo */
+    text-align: center;
+    margin-top: 10px; /* espaçamento superior agradável */
+}
+.user-logo {
+    width: 132px;              /* largura fixa desejada */
+    height: 64px;              /* altura fixa desejada */
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-light);
+    object-fit: contain;       /* Redimensiona sem cortar a imagem */
+    object-position: center;   /* Garante o alinhamento ao centro */
+    background-color: transparent; /* opcional, para evitar fundos indesejados */
+}
+
+.logo-placeholder {
+    width: 132px;
+    height: 64px;
+    background: var(--primary-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    border-radius: var(--border-radius);
+    color: #fff;
+    margin-right: auto;
+}
+
+/* Caixa de Saldo */
+.balance-box {
+    margin: 20px auto;
+    padding: 20px;
+    background: var(--primary-color);
+    color: #222;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-light);
+    max-width: 300px;
+    position: relative;
+
+    padding-bottom: 5px;
+}
+
+
+
+.balance-box p {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.toggle-icon {
+    cursor: pointer;
+    font-size: 1.2rem;
+    margin-left: 8px;
+    transition: opacity 0.3s;
+}
+
+.toggle-icon:hover {
+    opacity: 0.7;
+}
+
+
+
+/* Botão de Logout */
+.logout-button {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 30px;
+    background-color: #d9534f;
+    color: white;
+    border-radius: var(--border-radius);
+    text-decoration: none;
+    box-shadow: var(--shadow-light);
+}
+
+.logout-button:hover {
+    background-color: #c9302c;
+    transform: translateY(-2px);
+}
+
+/* Estilização de Modais */
+.modal {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex; justify-content: center; align-items: center;
+    z-index: 1000;
+}
+
+
+.modal-content {
+    max-height: 80vh;  /* Define uma altura máxima de 80% da tela */
+    overflow-y: auto;  /* Habilita a rolagem vertical quando necessário */
+    background: #fff;
+    padding: 20px;
+    border-radius: var(--border-radius);
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
+    box-shadow: var(--shadow-light);
+}
+
+/* Estiliza a barra de rolagem (apenas para navegadores que suportam) */
+.modal-content::-webkit-scrollbar {
+    width: 8px;
+}
+
+.modal-content::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+}
+
+.modal-content::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.1);
+}
+
+/* Garantir que inputs tenham o mesmo tamanho dos botões */
+.modal-content input[type="text"],
+.modal-content input[type="number"],
+.modal-content input[type="email"],
+.modal-content input[type="password"] {
+    width: 100%; /* Ocupar todo o espaço do modal */
+    max-width: 90%; /* Mantém uma margem interna para não encostar nas bordas */
+    padding: 12px;
+    border-radius: var(--border-radius);
+    border: 1px solid #ccc;
+    font-size: 1em;
+    box-sizing: border-box; /* Evita que padding e borda aumentem o tamanho */
+}
+/* Ajuste dos botões para ficarem do mesmo tamanho */
+.modal-content button {
+    width: 100%; /* Faz os botões ocuparem toda a largura disponível */
+    max-width: 90%; /* Para manter alinhado com os inputs */
+}
+/* Seção de extrato */
+.extrato-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 0.8rem;
+    padding: 4px 10px;
+    border-radius: var(--border-radius);
+    width: auto;
+    background-color: #fce877;
+    color: #222;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 5px;
+}
+
+.extrato-btn:hover {
+    background-color: #fbdc4f;
+}
+.extrato-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.extrato-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 12px;
+    border-bottom: 1px solid #444;
+    font-size: 0.9rem;  /* Reduz a fonte */
+}
+
+.extrato-item:last-child {
+    border-bottom: none;
+}
+
+.extrato-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    flex: 1;
+}
+
+.extrato-status {
+    margin-right: 10px;
+    font-size: 1.2rem;
+}
+
+.extrato-text {
+    font-weight: bold;
+}
+
+.valor, .taxa {
+    font-size: 0.85rem;
+}
+
+.satsback-btn {
+    top: 10px;
+    right: 10px;
+    font-size: 0.8rem;
+    padding: 4px 10px;
+    border-radius: var(--border-radius);
+    width: auto;
+    background-color: #fce877;
+    color: #222;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 5px;
+}
+
+.satsback-btn:hover {
+    background-color: #fbdc4f;
+}
+
+#modal-satsback {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+
+
+.satsback-list {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0;
+}
+
+.satsback-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 12px;
+    border-bottom: 1px solid #444;
+    font-size: 0.9rem;
+}
+
+.satsback-item:last-child {
+    border-bottom: none;
+}
+
+.satsback-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    flex: 1;
+}
+
+.satsback-status {
+    margin-right: 10px;
+    font-size: 1.2rem;
+}
+
+.satsback-amount {
+    font-weight: bold;
+}
+
+#payment-request-text {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
+    max-width: 100%;  /* Para garantir que respeite os limites do container */
+    display: block;
+    text-align: center;
+    padding: 10px;
+}
+#qrcode {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px auto;
+    width: 80%; /* Reduz o tamanho */
+    max-width: 220px; /* Define um limite */
+}
+#reader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px auto;
+    width: 100%; /* Ocupa toda a largura disponível */
+    max-width: 400px; /* Define um limite máximo */
+    height: 300px; /* Altura fixa para a área de escaneamento */
+    background-color: #000; /* Fundo preto para contraste */
+    border: 2px solid #ccc; /* Borda para destacar a área */
+    border-radius: 10px; /* Bordas arredondadas */
+    position: relative; /* Garante que o scanner não ultrapasse os limites */
+    overflow: hidden; /* Evita que o conteúdo ultrapasse o container */
+}
+
+/* Flash messages - Ajuste para Desktop */
+.flash-messages {
+    position: fixed; /* Mantém as mensagens fixas na tela */
+    top: 10px; /* Posiciona no topo */
+    left: 50%;
+    transform: translateX(-50%); /* Centraliza a mensagem */
+    z-index: 6000; /* Garante que fique acima de outros elementos */
+    width: auto;
+    max-width: 500px; /* Um pouco maior para melhor visibilidade */
+    text-align: center;
+}
+
+.flash-messages .alert {
+    padding: 12px 18px; /* Ajusta o espaço interno */
+    border-radius: var(--border-radius);
+    font-weight: bold;
+    text-align: center;
+    box-shadow: var(--shadow-light);
+    font-size: 1rem;
+    max-width: 100%;
+    word-wrap: break-word; /* Garante que a mensagem não seja cortada */
+}
+
+/* Mensagem de Sucesso - Fundo Verde */
+.flash-messages .alert-success {
+    background-color: #28a745; /* Verde */
+    color: white;
+}
+
+/* Mensagem de Erro - Fundo Vermelho */
+.flash-messages .alert-danger {
+    background-color: #ff4d4d; /* Vermelho */
+    color: white;
+}
+
+/* Mensagem de Aviso - Fundo Amarelo */
+.flash-messages .alert-warning {
+    background-color: #ffc107; /* Amarelo */
+    color: black;
+}
+
+/* Mensagem de Informação - Fundo Azul */
+.flash-messages .alert-info {
+    background-color: #17a2b8; /* Azul */
+    color: white;
+}
+
+
+.app-footer {
+    background-color: var(--header-bg);
+    color: #fff;
+    height: 80px; /* Mesma altura do header */
+    display: flex;
+    justify-content: center; /* Centraliza horizontalmente */
+    align-items: center; /* Centraliza verticalmente */
+    gap: 10px; /* Espaço entre o texto e a imagem */
+    box-shadow: var(--shadow-light);
+    bottom: 0;
+    left:0;
+    width: 100%;
+    z-index: 3000;
+    position: fixed;
+}
+.app-footer img {
+    height: 70px; /* Ajuste conforme necessário */
+    vertical-align: middle;
+}
+.lnbits-logo {
+    height: 27px !important; /* Ajuste conforme necessário */
+    vertical-align: middle;
+}
+
+
+.terms {
+    margin-top: 10px;
+}
+
+.terms a {
+    color: #ffcc00;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.terms a:hover {
+    text-decoration: underline;
+}
+
+/* Estilizando a seção principal para alinhar o texto inspirador e o formulário */
+.main-container {
+    display: flex;
+    justify-content: space-between; /* Espaço entre os elementos */
+    align-items: center;
+    width: 90%;
+    max-width: 1200px;
+    margin: 20px auto;
+}
+
+/* Ajustar o espaçamento do texto inspirador */
+.intro-text {
+    width: 65%; /* Reduz um pouco a largura */
+    text-align: left;
+    margin-left: 3%; /* Move mais para a esquerda */
+    margin-right: 10%;
+}
+
+/* Ajustar o tamanho da fonte e espaçamento para melhorar a leitura */
+.intro-text h2 {
+    font-size: 1.6rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.intro-text p {
+    font-size: 1rem;
+    line-height: 1.2 !important;
+    margin-bottom: 3px !important;
+    color: var(--text-color-light);
+}
+
+.tooltip-icon {
+    font-size: 1rem;
+    margin-left: 8px;
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+}
+
+.tooltip-text {
+    visibility: hidden;
+    opacity: 0;
+    position: absolute;
+    left: 50%;
+    top: 100%; /* Move para baixo do ícone */
+    transform: translateX(-80%);
+    width: 280px;  /* Reduz um pouco a largura */
+    background-color: rgba(0, 0, 0, 0.9);
+    color: #fff;
+    padding: 10px;
+    border-radius: 8px;
+    font-size: 0.8rem;  /* Fonte menor */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+    text-align: left;
+    transition: opacity 0.2s ease-in-out;
+    white-space: normal;
+    z-index: 2000;
+    line-height: 1.3; /* Melhor espaçamento entre as linhas */
+}
+
+.tooltip-icon:hover .tooltip-text {
+    visibility: visible;
+    opacity: 1;
+}
+
+.balance-converted {
+    font-size: 0.9rem;
+    font-weight: bold;
+    color: #666;
+    margin-top: 5px;
+    text-align: center;
+}
+
+.button-group {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* centraliza horizontalmente */
+    gap: 10px; /* espaçamento entre os botões */
+    
+    flex-grow: 1;
+}
+
+.change-password-btn, .buy-sats-btn {
+    font-size: 0.8rem;
+    padding: 4px 10px;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: background-color 0.3s;
+    text-decoration: none;
+    box-shadow: var(--shadow-light);
+}
+
+.buy-sats-btn {
+    background-color: #4CAF50; /* Verde positivo */
+    color: white;
+}
+
+.buy-sats-btn:hover {
+    background-color: #45a049;
+    transform: translateY(-2px);
+}
+
+.change-password-btn {
+    background-color: #fce877;
+    color: #222;
+}
+
+.change-password-btn:hover {
+    background-color: #fbdc4f;
+}
+
+/* Ajustes para tema escuro */
+.dark-theme .buy-sats-btn {
+    background-color: #66bb6a;
+    color: white;
+}
+
+.dark-theme .buy-sats-btn:hover {
+    background-color: #57a05b;
+}
+
+.dark-theme .change-password-btn {
+    background-color: #fbdc4f;
+    color: #222;
+    border: 1px solid #bfa300;
+}
+
+
+
+.dark-theme .container label {
+    color: var(--text-color-dark);
+}
+
+/* Ajuste para tema escuro */
+.dark-theme .intro-text p {
+    color: var(--text-color-dark);
+}
+
+.dark-theme .app-footer {
+    background-color: var(--header-bg);
+    color: #fff;
+    box-shadow: var(--shadow-dark);
+}
+
+
+.dark-theme {
+    background-color: var(--bg-color-dark);
+    color: var(--text-color-dark);
+}
+
+/* Fundo do site no tema escuro */
+.dark-theme body {
+    background-color: var(--bg-color-dark);
+}
+
+/* Ajusta os containers principais para um tom mais escuro */
+.dark-theme .container,
+.dark-theme .info-section {
+    background: #1e1e1e; /* Cinza escuro para melhor contraste */
+    box-shadow: var(--shadow-dark);
+}
+
+/* Ajuste de cor para links no tema escuro */
+.dark-theme a {
+    color: #ffcc00; /* Amarelo para melhor visibilidade */
+}
+
+.dark-theme a:hover {
+    color: #e6b800; /* Um tom mais escuro ao passar o mouse */
+}
+
+
+/* Garante que o texto fique legível */
+.dark-theme h1, 
+.dark-theme h2,
+.dark-theme p,
+.dark-theme code {
+    color: var(--text-color-dark);
+}
+
+/* No tema escuro, garante que os campos fiquem visíveis */
+.dark-theme input[type="text"],
+.dark-theme input[type="number"],
+.dark-theme input[type="email"],
+.dark-theme input[type="password"] {
+    background-color: #333;  /* Fundo escuro */
+    color: #ddd;  /* Texto claro */
+    border: 1px solid #555;  /* Borda mais sutil */
+}
+
+.dark-theme input::placeholder {
+    color: #bbb;  /* Cor do placeholder mais suave */
+}
+/* Ajustando os botões no tema escuro */
+.dark-theme button {
+    background-color: var(--primary-color);
+    color: #222;
+}
+
+.dark-theme button:hover {
+    background-color: #e6b800;
+}
+
+/* Ajuste para tema escuro */
+.dark-theme .container h3 {
+    color: white; /* Branco para fundo escuro */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6); /* Melhora a leitura no fundo escuro */
+}
+
+/* No tema escuro, ajusta a cor do botão e adiciona um contorno */
+.dark-theme .top-right button {
+    background-color: #444;
+    color: #ffcc00; /* Cor amarela para contrastar */
+    border-radius: 8px;
+    padding: 6px 10px;
+    border: 1px solid #666; /* Contorno sutil para destacar */
+}
+
+
+/* Ajuste para o botão de logout */
+.dark-theme .logout-button {
+    background-color: #c9302c;
+}
+
+.dark-theme .logout-button:hover {
+    background-color: #a72824;
+}
+
+/* Ajuste para modais no tema escuro */
+.dark-theme .modal-content {
+    background: #333;
+    color: #ddd;
+    box-shadow: var(--shadow-dark);
+}
+/* Ajuste na Caixa de Saldo no Tema Escuro */
+.dark-theme .balance-box {
+    background: var(--primary-color); /* Mantém o amarelo */
+    color: #222; /* Define um preto mais forte para contraste */
+}
+
+.dark-theme .balance-box p {
+    color: #222; /* Força o texto a ficar visível */
+}
+
+.dark-theme .balance-value {
+    color: #222 !important; /* Garante que o número de SATs fique legível */
+}
+.dark-theme .balance-converted {
+    color: #666 !important; /* Cinza para melhor contraste */
+}
+.dark-theme .extrato-btn {
+    background-color: #fbdc4f; /* Amarelo um pouco mais escuro */
+    color: #222; /* Texto escuro para melhor contraste */
+    border: 1px solid #bfa300; /* Contorno sutil para destaque */
+}
+.dark-theme .modal-content {
+    background: #333;
+    color: #ddd;
+    box-shadow: var(--shadow-dark);
+}
+
+.dark-theme .satsback-btn {
+    background-color: #fbdc4f;
+    color: #222;
+    border: 1px solid #bfa300;
+}
+
+
+/* Ajuste do botão "Alterar Senha" */
+.change-password-btn {
+    font-size: 0.8rem;
+    padding: 4px 10px;
+    border-radius: var(--border-radius);
+    width: auto;
+    background-color: #fce877;
+    color: #222;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    position: relative;
+    right: 0;
+    margin-right: 10px;
+}
+
+.change-password-btn:hover {
+    background-color: #fbdc4f;
+}
+
+/* Ajuste no tema claro para evitar fundo branco */
+.change-password-btn {
+    background-color: #ffd700;
+    color: #222;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Ajuste no tema escuro para manter contraste */
+.dark-theme .change-password-btn {
+    background-color: #fbdc4f;
+    color: #222;
+    border: 1px solid #bfa300;
+}
+
+
+
+/* Responsividade aprimorada */
+@media (max-width: 768px) {
+    html, body {
+        overflow: auto !important; /* Permite rolagem */
+        -webkit-overflow-scrolling: touch; /* Melhora experiência no iOS */
+    }
+    /* Adiciona espaçamento entre o header e o conteúdo */
+    .intro-text {
+        margin-top: 20px; /* Adiciona espaço acima do título */
+        padding-top: 10px; /* Evita que fique colado no topo */
+    }
+
+    /* Ajuste para o container principal */
+    body:not(.dashboard-page) .container {
+        margin-top: 60px; /* Aumenta o espaçamento inicial */
+    }
+
+    /* Garante que a margem do primeiro elemento abaixo do header seja respeitada */
+    .intro-text:first-of-type {
+        margin-top: 30px;
+    }
+
+    .container {
+        width: 95%;
+        padding: 20px;
+    }
+
+    .dashboard-buttons {
+        flex-direction: column;
+    }
+
+    .main-container {
+        flex-direction: column;
+        text-align: center;
+    }
+    #reader {
+        width: 90%; /* Reduz a largura para 90% da tela */
+        max-width: 300px; /* Limita a largura máxima */
+        height: 300px; /* Reduz a altura */
+    }
+    .intro-text {
+        width: 90%;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .intro-text h2 {
+        font-size: 1.4rem;
+    }
+
+    .intro-text p {
+        font-size: 0.9rem;
+    }
+
+    .balance-box {
+        max-width: 280px;
+        padding: 15px;
+    }
+
+    .satsback-btn {
+        position: relative;
+        width: 100%;
+        text-align: center;
+    }
+
+    .modal-content {
+        width: 95%;
+        max-width: 350px;
+        padding: 15px;
+    }
+}
+
+/* 🔹 Melhorias para iPhone e dispositivos menores */
+@media (max-width: 414px) { /* iPhone 11 Max e similares */
+    
+    body:not(.dashboard-page) .container {
+        margin-top: 60px !important; /* Aumenta o espaço inicial */
+        padding-top: 10px; /* Evita que fique colado no topo */
+    }
+
+    /* Garante que o título dentro do container não fique colado no topo */
+    .container h1,
+    .container h2 {
+        margin-top: 20px;
+    }
+    #reader {
+        width: 90%; /* Reduz a largura para 90% da tela */
+        max-width: 280px; /* Limita a largura máxima */
+        height: 280px; /* Reduz ainda mais a altura */
+    }
+    /* Adiciona espaçamento entre o header e o conteúdo */
+    .intro-text {
+        margin-top: 20px; /* Adiciona espaço acima do título */
+        padding-top: 10px; /* Evita que fique colado no topo */
+    }
+    /* Garante que a margem do primeiro elemento abaixo do header seja respeitada */
+    .intro-text:first-of-type {
+        margin-top: 30px;
+    }
+    /* Reduzindo o tamanho do título */
+    .app-title {
+        font-size: 0.9rem;
+    }
+
+    /* Ajustando o tamanho do logo */
+    .logo {
+        width: 42px;
+    }
+
+    /* Reduzindo padding do container */
+    .container {
+        width: 90%;
+        padding: 10px;
+    }
+
+    /* Reduzindo título e espaçamento do dashboard */
+    .dashboard-container h1 {
+        font-size: 1.3rem;
+    }
+
+    .dashboard-container h2 {
+        font-size: 1rem;
+    }
+
+    /* Ajustando tamanho da caixa de saldo */
+    .balance-box {
+        max-width: 220px;
+        padding: 10px;
+    }
+
+    .balance-box p {
+        font-size: 1rem;
+    }
+    .modal-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 95%;
+        max-width: 350px;
+        padding: 15px;
+        font-size: 0.8rem;
+    }
+
+    .modal-content input {
+        width: 90%; /* Garante que o input não fique maior que os botões */
+        max-width: 100%;
+        box-sizing: border-box; /* Garante que padding e borda não aumentem o tamanho */
+        margin-bottom: 10px; /* Espaçamento entre input e botões */
+    }
+
+    .modal-content button {
+        width: 90%; /* Mesma largura do input */
+        max-width: 100%;
+        text-align: center;
+        margin-top: 5px; /* Pequeno espaço entre os botões */
+    }
+
+    /* Ajuste para garantir que o título do modal fique fixo no topo */
+    .modal-large {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        width: 95%;
+        max-width: 380px;
+        padding: 15px;
+        max-height: 80vh; /* Define altura máxima para evitar que o modal cresça demais */
+        overflow: hidden; /* Evita que o título seja cortado */
+    }
+
+    .modal-large h3 {
+        position: sticky;
+        top: 0;
+        width: 100%;
+        padding: 10px 0;
+        text-align: center;
+        font-size: 1.2rem;
+        font-weight: bold;
+        z-index: 10;
+    }
+    /* Flash messages */
+    .flash-messages {
+      
+        margin-top: 10px;
+    }
+
+    .flash-messages .alert {
+        padding: 6px 10px; /* Reduz o padding interno */
+        font-size: 0.8rem; /* Texto menor */
+        border-radius: 8px;
+        text-align: center;
+        box-shadow: var(--shadow-light);
+        display: inline-block;
+    }
+    .extrato-container {
+        flex: 1;
+        overflow-y: auto; /* Habilita rolagem dentro do modal */
+        max-height: 70vh; /* Impede que a lista ultrapasse o modal */
+        padding: 10px;
+        width: 100%;
+    }
+
+    /* Reduzindo tamanho do botão de extrato */
+    .extrato-btn {
+        position: absolute;
+        top: 2px; /* Ajustando altura para não sobrepor o emoji */
+        right: 5px;
+        font-size: 0.75rem; /* Reduzindo um pouco o tamanho */
+        padding: 3px 6px;
+        border-radius: var(--border-radius);
+        background-color: #fce877;
+        color: #222;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        width: auto;
+    }
+    .intro-text h2 {
+        font-size: 1rem; /* Reduz o título */
+    }
+    .intro-text p {
+        font-size: 0.9rem;
+    }
+    input[type="text"],
+    input[type="email"],
+    input[type="password"] {
+            width: 100%;
+            max-width: 100%;
+            box-sizing: border-box; /* Garante que padding e borda não aumentem o tamanho */
+            margin: 8px 0; /* Evita excesso de margem */
+        }
+
+    .satsback-btn {
+        display: block;
+        margin: 8px auto; /* Centraliza dentro da caixa */
+        font-size: 0.8rem; /* Reduz tamanho da fonte */
+        padding: 5px 10px; /* Ajuste de padding para não ficar grande */
+        width: fit-content; /* Garante que o botão se ajuste ao texto */
+        max-width: 75%; /* Mantém um tamanho proporcional */
+        background-color: #fce877;
+        color: #222;
+        border-radius: var(--border-radius);
+        cursor: pointer;
+        transition: background-color 0.3s;
+        text-align: center;
+    }
+
+    /* Ajustando tamanho dos botões principais */
+    .actions button {
+        padding: 8px;
+        font-size: 0.9rem;
+    }
+
+    .balance-converted {
+        font-size: 0.8rem;
+        font-weight: bold;
+        color: #666;
+        margin-top: 5px;
+        text-align: center;
+    }
+
+    /* Reduzindo tamanho da imagem do usuário */
+    .header-user img {
+        width: 70px;
+        height: 70px;
+    }
+
+    /* 🔹 Ajustes no footer */
+    .app-footer {
+        height: 60px; /* Reduzindo altura */
+        padding: 5px;
+        font-size: 0.8rem;
+    }
+
+    .app-footer img {
+        height: 50px; /* Reduz tamanho do logo */
+    }
+
+    .lnbits-logo {
+        height: 20px !important;
+    }
+
+    .terms {
+        font-size: 0.8rem; /* Reduz tamanho da fonte */
+    }
+
+    .terms a {
+        font-size: 0.8rem;
+    }
+}
+
+    
+

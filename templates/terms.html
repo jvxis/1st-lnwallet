@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <h2>{{ translations['terms_title'] }}</h2>
+    <p>{{ translations['terms_intro'] }}</p>
+
+    <h3>{{ translations['balance_limit'] }}</h3>
+    <p>{{ translations['balance_text'] }}</p>
+
+    <h3>{{ translations['transaction_fees'] }}</h3>
+    <p>{{ translations['fees_text'] }}</p>
+
+    <h3>{{ translations['2fa_disclaimer'] }}</h3>
+    <p>{{ translations['2fa_disclaimer_text'] }}</p>
+
+    <h3>{{ translations['liability'] }}</h3>
+    <p>{{ translations['liability_text'] }}</p>
+
+    <h3>{{ translations['terms_changes'] }}</h3>
+    <p>{{ translations['changes_text'] }}</p>
+
+    <h3>{{ translations['contact'] }}</h3>
+    <p>{{ translations['contact_text'] }}</p>
+</div>
+{% endblock %}
+

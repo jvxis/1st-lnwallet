@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="flash-messages">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="alert alert-{{ category }}">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+</div>
+
+<div class="container">
+    <h2>{{ translations['register'] }}</h2>
+    <form action="/register" method="post" onsubmit="return validateForm()">
+        <!-- Nome da Carteira -->
+        <input type="text" id="wallet_name" name="name" placeholder="{{ translations['wallet_name'] }}" required
+               pattern="^[a-zA-Z0-9]{4,}$" title="{{ translations['error_wallet_name'] }}">
+        
+        <!-- E-mail -->
+        <input type="email" id="email" name="email" placeholder="{{ translations['email'] }}" required>
+
+        <!-- Senha -->
+        <input type="password" id="password" name="password" placeholder="{{ translations['password'] }}" required>
+
+        <!-- Logo (Opcional) -->
+        <input type="text" name="logo_url" placeholder="{{ translations['logo_url'] }}">
+
+        <button type="submit">{{ translations['register_button'] }}</button>
+    </form>
+
+    <p>
+        {{ translations['have_account'] }} 
+        <a href="{{ url_for('index') }}">{{ translations['login_here'] }}</a>
+    </p>
+    <p>
+        {{ translations['terms_conditions'] }}
+        <a href="{{ url_for('terms') }}">{{ translations['terms_link'] }}</a>
+    </p>
+</div>
+
+<script>
+function validateForm() {
+    const walletName = document.getElementById("wallet_name").value;
+    const password = document.getElementById("password").value;
+    const email = document.getElementById("email").value;
+
+    // Expressões regulares para validação
+    const walletPattern = /^[a-zA-Z0-9]{4,}$/;
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&#])[A-Za-z\d@$!%*?&#]{8,}$/;
+
+    if (!walletPattern.test(walletName)) {
+        alert("{{ translations['error_wallet_name'] }}");
+        return false;
+    }
+
+    if (!emailPattern.test(email)) {
+        alert("{{ translations['error_email'] }}");
+        return false;
+    }
+
+    if (!passwordPattern.test(password)) {
+        alert("{{ translations['error_password'] }}");
+        return false;
+    }
+
+    return true;
+}
+</script>
+
+{% endblock %}
