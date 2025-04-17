@@ -13,6 +13,7 @@ class Config:
     # Database name
     DB_NAME = 'database.db'
     # LN Bits API configuration
+    # If Lnbits is in the same machine, you can use LN_BITS_API_URL = "http://127.0.0.1/api/v1" and LN_BITS_BASE_URL = "http://127.0.0.1"
     LN_BITS_API_URL = "https://your_domain/api/v1"
     LN_BITS_BASE_URL = "https://your_domain"
     # Same as LN BITS DOMAIN
