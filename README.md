@@ -4,6 +4,30 @@ My First Lightning Wallet é uma aplicação Flask que permite criar e gerenciar
 
 ![image](https://github.com/user-attachments/assets/dc6c05eb-8cf1-4875-bbb8-9cbaf1108472)
 
+## Funcionalidades
+
+- Registro e login de usuários com autenticação 2FA.
+- Criação e gerenciamento de carteiras Lightning Network.
+- Pagamento e recebimento de invoices Lightning.
+- Sistema de Satsback para recompensas em transações.
+- Suporte a temas claro e escuro.
+- Interface multilíngue (Português e Inglês).
+
+## Estrutura do Projeto
+
+```plaintext
+.
+├── app.py                 # Arquivo principal da aplicação Flask
+├── auth.py                # Gerenciamento de autenticação e registro
+├── config_example.py      # Exemplo de configuração
+├── database.py            # Configuração e manipulação do banco de dados
+├── limiter.py             # Configuração de limites de requisição
+├── lnbits.py              # Integração com a API do LNbits
+├── requirements.txt       # Dependências do projeto
+├── static/                # Arquivos estáticos (CSS, JS, imagens)
+├── templates/             # Templates HTML
+└── logs/                  # Logs da aplicação
+```
 
 ## Pré-requisitos
 
@@ -75,11 +99,12 @@ O servidor estará disponível em `http://127.0.0.1:37421` por padrão
 
 Abra o navegador e acesse `http://127.0.0.1:37421` para usar a aplicação, isso para a mesma máquina. Caso o navegador esteja em máquina diferente da aplicação, usar o IP da máquina que esta a aplicação.
 
-### Implementação para PRODUÇÃO
+
+## Implementação para PRODUÇÃO
 
 Se você deseja fazer uma implementação para produção siga os passos abaixo:
 
-Passo 1 - Altere o host na última linha do script `app.py` para 127.0.0.1, isso irá permitir somente acesso local.
+### Passo 1 - Altere o host na última linha do script `app.py` para 127.0.0.1, isso irá permitir somente acesso local.
 
 Altere:
 
@@ -92,34 +117,17 @@ Para:
 app.run(debug=Config.DEBUG, port=Config.PORT, host='127.0.0.1')
 ```
 
-Passo 2 - Implemente um proxy reverso do Nginx ou usando Cloudflare para a porta da aplicação
+### Passo 2 - Implemente um proxy reverso do Nginx ou usando Cloudflare para a porta da aplicação
 
-Passo 3 - Aponte o Domínio para a aplicação
+### Passo 3 - Aponte o Domínio para a aplicação
 
-## Funcionalidades
-
-- Registro e login de usuários com autenticação 2FA.
-- Criação e gerenciamento de carteiras Lightning Network.
-- Pagamento e recebimento de invoices Lightning.
-- Sistema de Satsback para recompensas em transações.
-- Suporte a temas claro e escuro.
-- Interface multilíngue (Português e Inglês).
-
-## Estrutura do Projeto
-
-```plaintext
-.
-├── app.py                 # Arquivo principal da aplicação Flask
-├── auth.py                # Gerenciamento de autenticação e registro
-├── config_example.py      # Exemplo de configuração
-├── database.py            # Configuração e manipulação do banco de dados
-├── limiter.py             # Configuração de limites de requisição
-├── lnbits.py              # Integração com a API do LNbits
-├── requirements.txt       # Dependências do projeto
-├── static/                # Arquivos estáticos (CSS, JS, imagens)
-├── templates/             # Templates HTML
-└── logs/                  # Logs da aplicação
+### Passo 4 - Mude a variável de ambiente para Produção. Na linha de comando execute:
+```bash
+export FLASK_ENV=production
 ```
+
+### Passo 5 - No caso de usar o Nginx, utilize o `CERTBOT` para criar um certificado e acesso ao site via HTTPS.
+
 
 ## Contribuição
 
