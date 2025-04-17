@@ -68,11 +68,11 @@ Inicie o servidor Flask:
 python3 app.py
 ```
 
-O servidor estará disponível em `http://127.0.0.1:37421` por padrão.
+O servidor estará disponível em `http://127.0.0.1:37421` por padrão
 
 ### 7. Acesse a Aplicação
 
-Abra o navegador e acesse `http://127.0.0.1:37421` para usar a aplicação.
+Abra o navegador e acesse `http://127.0.0.1:37421` para usar a aplicação, isso para a mesma máquina. Caso o navegador esteja em máquina diferente da aplicação, usar o IP da máquina que esta a aplicação.
 
 ## Funcionalidades
 
