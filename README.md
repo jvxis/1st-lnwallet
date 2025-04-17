@@ -20,32 +20,6 @@ Siga os passos abaixo para configurar e executar o projeto:
 ```bash
 git clone https://github.com/jvxis/1st-lnwallet.git
 cd 1st-lnwallet
-
-Collecting workspace informationClaro! Aqui está um passo a passo em Markdown para configurar o projeto. Você pode usar este conteúdo para criar um arquivo `README.md` no GitHub:
-
-```markdown
-# My First Lightning Wallet
-
-My First Lightning Wallet é uma aplicação Flask que permite criar e gerenciar carteiras Lightning Network, realizar pagamentos, receber fundos e muito mais. Este projeto foi desenvolvido para facilitar a adoção do Bitcoin Lightning Network.
-
-## Pré-requisitos
-
-Antes de começar, certifique-se de ter os seguintes itens instalados:
-
-- Python 3.8 ou superior
-- Virtualenv (opcional, mas recomendado)
-- SQLite (para o banco de dados)
-- Um servidor LNbits configurado (ou acesso a um servidor existente)
-
-## Configuração do Projeto
-
-Siga os passos abaixo para configurar e executar o projeto:
-
-### 1. Clone o Repositório
-
-```bash
-git clone https://github.com/seu-usuario/seu-repositorio.git
-cd seu-repositorio
 ```
 
 ### 2. Crie e Ative um Ambiente Virtual
