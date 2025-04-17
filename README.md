@@ -13,6 +13,7 @@ Antes de começar, certifique-se de ter os seguintes itens instalados:
 - Virtualenv (opcional, mas recomendado)
 - SQLite (para o banco de dados)
 - Um servidor LNbits configurado (ou acesso a um servidor existente)
+- Habilitar a extensão PAYLINKS no seu LNBITS
 
 ## Configuração do Projeto
 
@@ -73,6 +74,17 @@ O servidor estará disponível em `http://127.0.0.1:37421` por padrão
 ### 7. Acesse a Aplicação
 
 Abra o navegador e acesse `http://127.0.0.1:37421` para usar a aplicação, isso para a mesma máquina. Caso o navegador esteja em máquina diferente da aplicação, usar o IP da máquina que esta a aplicação.
+
+### Implementação para PRODUÇÃO
+
+Se você deseja fazer uma implementação para produção siga os passos abaixo:
+
+Passo 1 - Altere o host do `app.py` para 127.0.0.1, isso irá permitir somente acesso local.
+```bash
+```
+Passo 2 - Implemente um proxy reverso do Nginx ou usando Cloudflare para a porta da aplicação
+
+Passo 3 - Aponte o Domínio para a aplicação
 
 ## Funcionalidades
 
